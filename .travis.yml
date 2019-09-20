@@ -1,0 +1,37 @@
+language: rust
+
+matrix:
+  include:
+    - env: TARGET=binary
+      rust: stable
+      script:
+        - cd binary
+        - cargo check --target thumbv7em-none-eabihf
+    - env: TARGET=firmware
+      rust: stable
+      script:
+        - cd firmware
+        - cargo check --target thumbv7em-none-eabihf
+        - cargo test
+
+before_install: set -e
+
+install:
+  - bash ci/install.sh
+
+after_script: set +e
+
+cache: cargo
+
+before_cache:
+  - chmod -R a+r $HOME/.cargo
+
+branches:
+  only:
+    - master
+    - staging
+    - trying
+
+notifications:
+  email:
+    on_success: never

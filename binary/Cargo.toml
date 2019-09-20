@@ -1,0 +1,40 @@
+[package]
+name = "example"
+categories = ["embedded", "no-std"]
+authors = ["Emil Fresk <emil.fresk@gmail.com>"]
+description = "Example project"
+keywords = ["arm", "cortex-m", "mav"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/korken89/trustflight_firmware"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+panic-semihosting = "0.5.2"
+cortex-m = "0.6"
+
+[dependencies.firmware]
+path = "../firmware"
+
+[dependencies.nrf52832-hal]
+version = "0.8"
+default-features = false
+features = [ "xxAA-package", "rt" ]
+
+# this lets you use `cargo fix`!
+[[bin]]
+name = "app"
+test = false
+bench = false
+
+[profile.dev]
+opt-level = 1
+codegen-units = 16
+debug = true
+lto = false
+
+[profile.release]
+opt-level = "s"     # optimize for size
+codegen-units = 1   # better optimizations
+debug = true        # symbols are nice and they don't increase the size on Flash
+lto = true          # better optimizations
