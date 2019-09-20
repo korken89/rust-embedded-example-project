@@ -1,6 +1,6 @@
 # An example project for Rust embedded
 
-[![Build Status](https://travis-ci.org/korken89/trustflight_firmware.svg?branch=master)](https://travis-ci.org/korken89/)
+[![Build Status](https://travis-ci.org/korken89/rust-embedded-example-project.svg?branch=master)](https://travis-ci.org/korken89/rust-embedded-example-project)
 
 ## Aim
 
