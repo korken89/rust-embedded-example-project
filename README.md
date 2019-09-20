@@ -21,6 +21,10 @@ To check the firmware crate, go to the firmware crate and run `cargo test`
 
 To flash and run the complete binary project, go to the binary crate and run `cargo run`
 
+## Getting hardware dependencies into the firmware crate
+
+As the firmware crate will not compile if one adds hardware crates, the way to get around this is to create a trait which outlines the desired functionality, and the one implements the trait in the binary crate. This can then be passed to functions in the firmware crate that takes `impl MyTrait` as arguments.
+
 ## Documentation
 
 The `cargo doc --open` command works in both crates
