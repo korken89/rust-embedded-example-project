@@ -4,7 +4,7 @@
 
 ## Aim
 
-This is an example/template for how to structure embedded Rust projects to the firmware can still be tested, i.e. `cargo test` still works.
+This is an example/template for how to structure embedded Rust projects such that the firmware can still be tested, i.e. `cargo test` still works.
 
 ## Layout
 
