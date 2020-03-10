@@ -2,17 +2,10 @@ language: rust
 
 matrix:
   include:
-    - env: TARGET=binary
-      rust: stable
-      script:
-        - cd binary
-        - cargo check --target thumbv7em-none-eabihf
-    - env: TARGET=firmware
-      rust: stable
-      script:
-        - cd firmware
-        - cargo check --target thumbv7em-none-eabihf
-        - cargo test
+      - name:
+        rust: stable
+        script:
+          - bash ci/script.sh
 
 before_install: set -e
 
