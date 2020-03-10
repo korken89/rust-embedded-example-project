@@ -10,9 +10,9 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-panic-semihosting = "0.5.2"
-cortex-m = "0.6"
-cortex-m-rt = "0.6.5"
+panic-halt = "0.2"
+panic-semihosting = "0.5"
+cortex-m-rtfm = "0.5.0-beta.1"
 
 [dependencies.firmware]
 path = "../firmware"

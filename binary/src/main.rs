@@ -4,18 +4,23 @@
 #![no_main]
 #![no_std]
 
-use cortex_m_rt::entry;
 pub use firmware as _;
 use nrf52832_hal as _;
-use panic_semihosting as _; // The pub makes the firmware visible in cargo doc
+use nrf52832_hal::target;
+// use panic_halt as _;
+use panic_semihosting as _;
+use rtfm::app;
 
-#[entry]
-fn main() -> ! {
-    // Some init code...
-    firmware::init();
-
-    loop {
-        // Some idle code...
-        firmware::idle();
+#[app(device = nrf52832_hal::target, peripherals = true)]
+const APP: () = {
+    struct Resources {
+        spi: target::SPIM0,
     }
-}
+
+    #[init]
+    fn init(cx: init::Context) -> init::LateResources {
+        init::LateResources {
+            spi: cx.device.SPIM0,
+        }
+    }
+};
