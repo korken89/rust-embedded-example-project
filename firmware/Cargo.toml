@@ -3,3 +3,23 @@ name = "firmware"
 authors = ["Emil Fresk <emil.fresk@gmail.com>"]
 version = "0.1.0"
 edition = "2018"
+
+# `syn` and other proc-macro crates take very long to build when optimized
+# this disables optimizations for them reducing the time it takes to build the
+# whole dependency graph by ~80%
+[profile.dev.build-override]
+codegen-units = 16
+debug = false
+debug-assertions = false
+incremental = true
+opt-level = 0
+overflow-checks = false
+
+[profile.release.build-override]
+codegen-units = 16
+debug = false
+debug-assertions = false
+incremental = true
+opt-level = 0
+overflow-checks = false
+
